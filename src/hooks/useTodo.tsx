@@ -15,7 +15,7 @@ export const useTodo = () => {
     });
   }, []);
 
-  const addTodoList = (todoContent: string) => {
+  const addTodoItem = (todoContent: string) => {
 
     const ids: number[] = [];
     Object.keys(todoList).forEach(function(k) {
@@ -34,6 +34,15 @@ export const useTodo = () => {
     });
   };
 
+  const updateTodoItem = (id: number, newTodoItem: Todo) => {
+    todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
+
+      const newTodoList = todoList.map((item) => (item.id !== updatedTodo.id ? item : updatedTodo));
+
+      setTodoList(newTodoList);
+    });
+  }
+
   const handleDelete = (id: number) => {
 
     todoData.deleteTodoData(id).then((deletedId) => {
@@ -51,7 +60,7 @@ export const useTodo = () => {
       return;
     }
 
-    addTodoList(inputEl.current!.value);
+    addTodoItem(inputEl.current!.value);
 
     inputEl.current!.value = '';
   };
@@ -74,29 +83,17 @@ export const useTodo = () => {
   });
 
   const handleCheck = (id: number, done: boolean) => {
-    setTodoList((todos) => {
-      const newTodoItem = todos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, done };
-        }
-        return todo;
-      });
+    const todoItem = todoList.find((item: Todo) => item.id === id);
+    const newTodoItem: Todo = { ...todoItem!, done: done };
 
-      return newTodoItem;
-    });
+    updateTodoItem(id, newTodoItem);
   };
 
   const handleEdit = (id: number, content: string) => {
-    setTodoList((todos) => {
-      const newTodoItem = todos.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, content };
-        }
-        return todo;
-      });
+    const todoItem = todoList.find((item: Todo) => item.id === id);
+    const newTodoItem: Todo = { ...todoItem!, content };
 
-      return newTodoItem;
-    });
+    updateTodoItem(id, newTodoItem);
   }
 
   return {

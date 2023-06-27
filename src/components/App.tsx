@@ -1,14 +1,11 @@
 import React from "react";
 
 import { useTodo } from "../hooks/useTodo";
-import { Todo } from "../types/Todo";
 import { TodoAdd } from "./TodoAdd";
 import { TodoList } from "./TodoList";
 import { TodoTitle } from "./TodoTitle";
 import { TodoSelect } from "./TodoSelect";
 import "../style.css";
-
-type Filter = 'all' | 'done' | 'undone';
 
 function App() {
 
@@ -41,6 +38,7 @@ function App() {
 
       <TodoList
         todoList={filteredTodoList}
+        inputEl={inputEl}
         handleCheck={handleCheck}
         handleEdit={handleEdit}
         handleDelete={handleDelete}

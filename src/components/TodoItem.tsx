@@ -1,16 +1,17 @@
 import { Todo } from "../types/Todo";
 
-// 1つのTodo、内容と移動・削除ボタン
 export const TodoItem = ({
   todo,
+  inputEl,
   handleCheck,
   handleEdit,
   handleDelete
 }: {
   todo: Todo;
+  inputEl: any;
   handleCheck: any;
   handleEdit: any;
-  handleDelete: any
+  handleDelete: any;
 }) => {
 
   // hooks/useTodo
@@ -25,8 +26,8 @@ export const TodoItem = ({
         checked={todo.done}
         onChange={checkTodo}
       />
-      <input
-        type="text"
+      <textarea
+        ref={inputEl}
         disabled={todo.done}
         value={todo.content}
         onChange={editTodo}
