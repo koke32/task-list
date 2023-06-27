@@ -1,18 +1,15 @@
-import { RefObject } from "react";
 import { Todo } from "../types/Todo";
 import { TodoItem } from "./TodoItem";
 
 export const TodoList = ({
   todoList,
-  inputEl,
-  handleCheck,
+  handleDone,
   handleEdit,
   handleDelete,
 }: {
-  todoList: Todo[];
-  inputEl: RefObject<HTMLTextAreaElement>;
-  handleCheck: (id: number, done: boolean) => void;
-  handleEdit: (id: number, content: string) => void;
+  todoList:     Todo[];
+  handleDone:   (id: number, done: boolean) => void;
+  handleEdit:   (id: number, content: string) => void;
   handleDelete: (id: number) => void;
 }) => {
 
@@ -25,8 +22,7 @@ export const TodoList = ({
               <TodoItem
                 todo={todo}
                 key={todo.id}
-                inputEl={inputEl}
-                handleCheck={handleCheck}
+                handleDone={handleDone}
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
               />

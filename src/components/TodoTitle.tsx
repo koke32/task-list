@@ -6,7 +6,7 @@ export const TodoTitle = memo((
     as
   }: {
     title: string;
-    as: string;
+    as:    string;
   }) => {
 
   let res = <p>{title}</p>;

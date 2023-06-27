@@ -10,13 +10,13 @@ import "../style.css";
 function App() {
 
   const {
-    handleDelete,
     inputEl,
     handleAdd,
+    handleDelete,
+    handleDone,
+    handleEdit,
     handleSort,
     filteredTodoList,
-    handleCheck,
-    handleEdit
   } = useTodo();
 
   return (
@@ -38,8 +38,7 @@ function App() {
 
       <TodoList
         todoList={filteredTodoList}
-        inputEl={inputEl}
-        handleCheck={handleCheck}
+        handleDone={handleDone}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
       />

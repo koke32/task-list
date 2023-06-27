@@ -2,20 +2,18 @@ import { Todo } from "../types/Todo";
 
 export const TodoItem = ({
   todo,
-  inputEl,
-  handleCheck,
+  handleDone,
   handleEdit,
   handleDelete
 }: {
-  todo: Todo;
-  inputEl: any;
-  handleCheck: any;
-  handleEdit: any;
+  todo:         Todo;
+  handleDone:   any;
+  handleEdit:   any;
   handleDelete: any;
 }) => {
 
   // hooks/useTodo
-  const checkTodo = () => handleCheck(todo.id, !todo.done);
+  const doneTodo = () => handleDone(todo.id, !todo.done);
   const editTodo = (e: React.ChangeEvent<any>) => handleEdit(todo.id, e.target.value);
   const deleteTodo = () => handleDelete(todo.id);
 
@@ -24,10 +22,10 @@ export const TodoItem = ({
       <input
         type="checkbox"
         checked={todo.done}
-        onChange={checkTodo}
+        onChange={doneTodo}
       />
-      <textarea
-        ref={inputEl}
+      <input
+        type="text"
         disabled={todo.done}
         value={todo.content}
         onChange={editTodo}

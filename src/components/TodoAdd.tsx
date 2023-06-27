@@ -7,16 +7,16 @@ export const TodoAdd = (
     handleAdd
   }: {
     buttonText: string;
-    inputEl: RefObject<HTMLTextAreaElement>;
-    handleAdd: () => void;
+    inputEl:    RefObject<HTMLTextAreaElement>;
+    handleAdd:  () => void;
   }) => {
 
   return (
-    <div>
+    <>
       <textarea ref={inputEl} />
       <button onClick={handleAdd}>
         {buttonText}
       </button>
-    </div>
+    </>
   );
 };
